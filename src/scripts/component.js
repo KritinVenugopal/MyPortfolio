@@ -58,7 +58,7 @@ class projectcards extends HTMLElement {
                 <div class="card-img"><img src="src/asset/images/card-images/universalOtt-card.png" alt=""></div>
                 <div class="info-card-context">
                     <div class="card-content">
-                        <h3>Universal OTT Case Study</h3>
+                        <h3>Universal OTT</h3>
                         <h4>6th February 2024</h4>
                     </div>
                     <div class="card-details">
