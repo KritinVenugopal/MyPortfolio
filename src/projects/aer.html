@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#ffffff">
     <title>Portfolio - AER</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scroller.css">
     <script src="../scripts/script.js"></script>
     <script src="../scripts/navInnerPage.js"></script>
 </head>
@@ -50,8 +51,9 @@
         <h2>Mind Map</h2>
         <img src="../asset/images/aer/aer-mind-map.png" alt="aer-mind-map">
     </section>
-    <section class="full-width">
-        <img src="../asset/images/aer/game.png" alt="game">
+    <section class="full-width scroller" data-direction="left" data-speed="slow">
+        <div class="scroller__inner"><img src="../asset/images/aer/game.png" alt="game"></div>
+        <script src="../scripts/scroller.js"></script>
     </section>
     <section class="flex-section" id="flex-section-2">
         <div class="flex-section-image">
@@ -134,8 +136,16 @@
             </div>
         </div>
         <div class="aer-slider-nav">
-          <button id="aer-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></button>
-          <button id="aer-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></button>
+            <button id="aer-prev"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg></button>
+            <button id="aer-next"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </svg></button>
         </div>
         <div class="aer-preview-container">
         </div>
