@@ -874,8 +874,8 @@ p.percent-text {
 }
 .aer-slider-container {
     position: relative;
-    width: 1408px;
-    height: 880px;
+    width: 1270px;
+    height: auto;
     margin: auto;
     overflow: hidden;
     border-radius: 25px;
@@ -905,10 +905,9 @@ p.percent-text {
 }
 
 .aer-preview-image {
-    width: 260px;
-    height: 162px;
+    width: 235px;
+    height: auto;
     margin: 0 10px;
-    transition: opacity 0.3s ease-in-out;
     cursor: pointer;
 }
 
