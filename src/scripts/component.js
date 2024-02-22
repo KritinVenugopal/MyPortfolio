@@ -200,7 +200,7 @@ class footerCustom extends HTMLElement {
                 <p>contact me at <a href="mailto:kritinvenugopal@gmail.com">kritinvenugopal@gmail.com</a></p>
                 <div class="social">
                 <a href="https://www.behance.net/KritinV"><img src="src/asset/images/behance.png" alt="Behance"></a>
-                <a href="https://www.behance.net/KritinV"><img src="src/asset/images/linkedin.png" alt="linkedin"></a>
+                <a href="https://www.linkedin.com/in/kritinvenugopal"><img src="src/asset/images/linkedin.png" alt="linkedin"></a>
                 </div>
             </section>
         </footer>
@@ -216,7 +216,7 @@ class footerCustomInnerPage extends HTMLElement {
                 <p>contact me at <a href="mailto:kritinvenugopal@gmail.com">kritinvenugopal@gmail.com</a></p>
                 <div class="social">
                     <a href="https://www.behance.net/KritinV"><img src="../asset/images/behance.png" alt="Behance"></a>
-                    <a href="https://www.behance.net/KritinV"><img src="../asset/images/linkedin.png" alt="linkedin"></a>
+                    <a href="https://www.linkedin.com/in/kritinvenugopal/"><img src="../asset/images/linkedin.png" alt="linkedin"></a>
                 </div>
             </section>
         </footer>
