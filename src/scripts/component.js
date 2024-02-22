@@ -75,28 +75,6 @@ class projectcards extends HTMLElement {
         </a>
     </div>
     <div class="card-out">
-        <a href="/MyPortfolio/src/projects/moneyBip.html">
-            <div class="card">
-                <div class="card-img"><img src="src/asset/images/card-images/MoneyBip.png" alt=""></div>
-                <div class="info-card-context">
-                    <div class="card-content">
-                        <h3>MoneyBip</h3>
-                        <h4>25th January 2024</h4>
-                    </div>
-                    <div class="card-details">
-                        <div class="card-info">
-                            <p>Case Study</p>
-                            <p>User Experience</p>
-                        </div>
-                        <div class="card-link">
-                            <button><a href="/MyPortfolio/src/projects/moneyBip.html">View Project</a></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="card-out">
         <a href="/MyPortfolio/src/projects/signal.html">
             <div class="card">
                 <div class="card-img"><img src="src/asset/images/card-images/signal-card.png" alt=""></div>
@@ -162,7 +140,7 @@ class projectcards extends HTMLElement {
             </div>
         </a>
     </div>
-    <div class="card-out hidden">
+    <div class="card-out">
         <a href="/MyPortfolio/src/projects/hamsak.html">
             <div class="card">
                 <div class="card-img"><img src="src/asset/images/card-images/hamsak-card.png" alt=""></div>
@@ -186,22 +164,24 @@ class projectcards extends HTMLElement {
         </a>
     </div>
 </div>
-<div class="custom-button-container">
-    <button class="custom-button" id="view-more-btn"><a>View More Projects</a></button>
-</div>
 `
     }
 }
 
-class customButtons extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-        <div class="custom-button-container">
-            <button class="custom-button"><a href="#">View More Projects</a></button>
-        </div>
-        `
-    }
-}
+// add this if required in the above code after line 166 to add view more button
+//<div class="custom-button-container">
+//   <button class="custom-button" id="view-more-btn"><a>View More Projects</a></button>
+//</div>
+// home page view more button under projects
+// class customButtons extends HTMLElement {
+//     connectedCallback() {
+//         this.innerHTML = `
+//         <div class="custom-button-container">
+//             <button class="custom-button"><a href="#">View More Projects</a></button>
+//         </div>
+//         `
+//     }
+// }
 class customBackButtons extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -246,7 +226,7 @@ class footerCustomInnerPage extends HTMLElement {
 customElements.define('page-navbar', navBar);
 customElements.define('inner-page-navbar', navBarInner);
 customElements.define('project-cards', projectcards);
-customElements.define('custom-buttons', customButtons);
+// customElements.define('custom-buttons', customButtons);
 customElements.define('custom-back-buttons', customBackButtons);
 customElements.define('custom-footer', footerCustom);
 customElements.define('custom-footer-inner-page', footerCustomInnerPage);

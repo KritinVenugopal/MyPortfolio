@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // card section
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
   const viewMoreBtn = document.getElementById('view-more-btn');
   const hiddenCards = document.querySelectorAll('.hidden');
 
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
       viewMoreBtn.textContent = 'View More Projects';
     }
   });
-});
+});*/
 // active link switching
 document.addEventListener("DOMContentLoaded", function() {
   const sections = document.querySelectorAll("section");
