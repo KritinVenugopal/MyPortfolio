@@ -1,47 +1,49 @@
 // typing animation script
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const text = "Hi, I'm Kritin"; // Text to be typed
-    const speed = 50; // Typing speed in milliseconds
+    const speed = 50; // Typing speed in milliseconds (slower speed)
     const element = document.getElementById('typing-text');
-    let repeatInterval = 15000; // Repeat interval in milliseconds (15 seconds)
+    let animationFrame; // Variable to hold the animation frame
+    const repeatInterval = 15000; // Repeat interval in milliseconds (15 seconds)
     let repeatTimeout; // Variable to hold the repeat timeout
-
+  
     function typeWriter() {
-        let i = 0;
-        element.innerHTML = ''; // Reset the text element
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
+      let i = 0;
+      element.innerHTML = ''; // Reset the text element
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          // Adjust speed here by using the speed variable in setTimeout
+          animationFrame = setTimeout(type, speed);
         }
-        type(); // Start the typing animation
+      }
+      type(); // Start the typing animation
     }
-    let animationRunning = false; // Flag to track animation status
-
+  
     function repeatAnimation() {
-        if (!animationRunning) {
-            animationRunning = true; // Set the flag to indicate animation is running
-            clearTimeout(repeatTimeout); // Clear any previous repeat timeout
-            typeWriter(); // Start the animation
-            repeatTimeout = setTimeout(function () {
-                animationRunning = false; // Reset the flag after animation completes
-                repeatAnimation(); // Schedule next animation
-            }, repeatInterval);
-        }
+      clearTimeout(repeatTimeout); // Clear any previous repeat timeout
+      typeWriter(); // Start the animation
+      repeatTimeout = setTimeout(repeatAnimation, repeatInterval); // Schedule next animation
     }
-
+  
+    function startAnimation() {
+      repeatAnimation(); // Start the animation
+    }
+  
     function scrollHandler() {
-        const heroSection = document.getElementById('about');
-        const heroSectionTop = heroSection.getBoundingClientRect().top;
-
-        if (heroSectionTop >= 0 && heroSectionTop < window.innerHeight) {
-            // User has scrolled back to the hero section
-            repeatAnimation(); // Restart the animation
-        }
+      const heroSection = document.getElementById('about');
+      const heroSectionTop = heroSection.getBoundingClientRect().top;
+  
+      if (heroSectionTop >= 0 && heroSectionTop < window.innerHeight) {
+        // User has scrolled back to the hero section
+        startAnimation(); // Restart the animation
+      } else {
+        cancelAnimationFrame(animationFrame); // Stop the animation if not in view
+        clearTimeout(repeatTimeout); // Stop repeat if not in view
+      }
     }
-
-    repeatAnimation(); // Start the initial animation
+  
+    startAnimation(); // Start the initial animation
     window.addEventListener('scroll', scrollHandler);
 });
