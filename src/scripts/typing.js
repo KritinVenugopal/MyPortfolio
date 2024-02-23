@@ -1,7 +1,7 @@
 // typing animation script
 document.addEventListener('DOMContentLoaded', function() {
     const text = "Hi, I'm Kritin"; // Text to be typed
-    const speed = 50; // Typing speed in milliseconds (slower speed)
+    const speed = 100; // Typing speed in milliseconds (slower speed)
     const element = document.getElementById('typing-text');
     let animationFrame; // Variable to hold the animation frame
     const repeatInterval = 15000; // Repeat interval in milliseconds (15 seconds)
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
     function typeWriter() {
       let i = 0;
-      element.innerHTML = ''; // Reset the text element
+      // Reset the text element
+      element.innerHTML = '';
       function type() {
         if (i < text.length) {
           element.innerHTML += text.charAt(i);
