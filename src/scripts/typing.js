@@ -1,25 +1,31 @@
 // typing animation script
 document.addEventListener('DOMContentLoaded', function() {
     const text = "Hi, I'm Kritin"; // Text to be typed
-    const speed = 100; // Typing speed in milliseconds (slower speed)
+    const speed = 50; // Typing speed in milliseconds (slower speed)
     const element = document.getElementById('typing-text');
     let animationFrame; // Variable to hold the animation frame
     const repeatInterval = 15000; // Repeat interval in milliseconds (15 seconds)
     let repeatTimeout; // Variable to hold the repeat timeout
+    let isAnimating = false; // Flag to track animation state
   
     function typeWriter() {
       let i = 0;
-      // Reset the text element
-      element.innerHTML = '';
       function type() {
         if (i < text.length) {
-          element.innerHTML += text.charAt(i);
+          element.textContent += text.charAt(i);
           i++;
-          // Adjust speed here by using the speed variable in setTimeout
           animationFrame = setTimeout(type, speed);
+        } else {
+          isAnimating = false; // Animation complete
         }
       }
-      type(); // Start the typing animation
+
+      // Start typing only if not already animating
+      if (!isAnimating) {
+        isAnimating = true;
+        element.textContent = ''; // Clear existing text
+        type(); // Start typing animation
+      }
     }
   
     function repeatAnimation() {
@@ -42,9 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         cancelAnimationFrame(animationFrame); // Stop the animation if not in view
         clearTimeout(repeatTimeout); // Stop repeat if not in view
+        isAnimating = false; // Reset animation flag
       }
     }
   
     startAnimation(); // Start the initial animation
     window.addEventListener('scroll', scrollHandler);
 });
+
