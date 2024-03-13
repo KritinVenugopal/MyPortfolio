@@ -1168,7 +1168,8 @@ mobile-page-navbar {
 /* mobile menu end */
 @media only screen and (max-width: 480px) {
     #img-1 {
-        width: 100%;
+        width: 75%;
+        padding-top: 2rem;
     }
 
     section.cover-section h1 {
@@ -1249,7 +1250,7 @@ mobile-page-navbar {
         box-shadow: 2px 2px 5px 1px #00000038, 0px 0px 0px 6px #C5EDF6, 0px 0px 0px 3px #000;
         margin-left: 1rem;
         margin-right: 1rem;
-        padding: 10px 40px;
+        padding: 8px 60px;
         border-radius: 10px;
     }
 
@@ -1267,5 +1268,8 @@ mobile-page-navbar {
 
     mobile-page-navbar {
         display: block;
+    }
+    #contact h2 {
+        margin: 0;
     }
 }
