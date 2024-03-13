@@ -228,7 +228,7 @@ class footerCustom extends HTMLElement {
         this.innerHTML = `
         <footer>
             <section class="contactme" id="contact">
-                <h2>Contact me</h2>
+                <h2>Contact</h2>
                 <p>contact me at <a href="mailto:kritinvenugopal@gmail.com">kritinvenugopal@gmail.com</a></p>
                 <div class="social">
                 <a href="https://www.behance.net/KritinV"><img class="img-left-social" src="src/asset/images/behance.png" alt="Behance"></a>
@@ -244,7 +244,7 @@ class footerCustomInnerPage extends HTMLElement {
         this.innerHTML = `
         <footer>
             <section class="contactme" id="contact">
-                <h2>Contact me</h2>
+                <h2>Contact</h2>
                 <p>contact me at <a href="mailto:kritinvenugopal@gmail.com">kritinvenugopal@gmail.com</a></p>
                 <div class="social">
                     <a href="https://www.behance.net/KritinV"><img src="../asset/images/behance.png" alt="Behance"></a>
