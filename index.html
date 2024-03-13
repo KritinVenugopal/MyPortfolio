@@ -14,6 +14,7 @@
     <title>Kritin's UX Portfolio</title>
     <link rel="stylesheet" href="src/css/style.css">
     <script src="src/scripts/script.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body class="home-page">
@@ -36,6 +37,8 @@
         </section>
     </header>
     <page-navbar></page-navbar>
+    <mobile-page-navbar></mobile-page-navbar>
+    <script src="./src/scripts/navbar-ani.js"></script>
     <!-- <section class="home-page-nav"><page-navbar></page-navbar></section> -->
     <section class="projects-home" id="projects">
         <div>
@@ -47,7 +50,8 @@
     <section class="timeline-image" id="timeline">
         <div>
             <h2>Career Timeline</h2>
-            <img src="src/asset/images/timeline-2x.png" alt="">
+            <img class="desktop-img" src="src/asset/images/timeline-2x.png" alt="desktop-image">
+            <img class="mobile-img" src="src/asset/images/timeline-vertical.png" alt="mobile-image">
         </div>
     </section>
     <custom-footer></custom-footer>

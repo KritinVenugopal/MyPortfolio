@@ -12,6 +12,38 @@ class navBar extends HTMLElement {
     `
     }
 }
+class navBarMobile extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <section class="mobile-navigation">
+        <div class="fixed-nav-bar">
+            <input type="checkbox" id="menuButton" />
+            <label for="menuButton" class="menu-button-label">
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+            </label>
+        </div>
+        <div class="the-bass">
+            <div class="rela-block drop-down-container">
+                <div class="drop-down-item"><a href="#">About Me</a></div>
+            </div>
+            <div class="rela-block drop-down-container">
+                <div class="drop-down-item"><a href="#projects">Projects</a></div>
+            </div>
+            <div class="rela-block drop-down-container">
+                <div class="drop-down-item"><a href="#timeline">Timeline</a></div>
+            </div>
+            <div class="rela-block drop-down-container">
+                <div class="drop-down-item"><a href="#contact">Contact Me</a></div>
+            </div>
+        </div>
+        <div class="rela-block deer-section"></div>
+    </section>
+    `
+    }
+}
 class navBarInner extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -199,7 +231,7 @@ class footerCustom extends HTMLElement {
                 <h2>Contact me</h2>
                 <p>contact me at <a href="mailto:kritinvenugopal@gmail.com">kritinvenugopal@gmail.com</a></p>
                 <div class="social">
-                <a href="https://www.behance.net/KritinV"><img src="src/asset/images/behance.png" alt="Behance"></a>
+                <a href="https://www.behance.net/KritinV"><img class="img-left-social" src="src/asset/images/behance.png" alt="Behance"></a>
                 <a href="https://www.linkedin.com/in/kritinvenugopal"><img src="src/asset/images/linkedin.png" alt="linkedin"></a>
                 </div>
             </section>
@@ -224,6 +256,7 @@ class footerCustomInnerPage extends HTMLElement {
     }
 }
 customElements.define('page-navbar', navBar);
+customElements.define('mobile-page-navbar', navBarMobile);
 customElements.define('inner-page-navbar', navBarInner);
 customElements.define('project-cards', projectcards);
 // customElements.define('custom-buttons', customButtons);
