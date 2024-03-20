@@ -1296,6 +1296,23 @@ mobile-page-navbar {
     }
     .back-button button.custom-button::after {
         top: 14px;
-        
+    }
+    .percent-box .percent-number {
+        font-size: 36px;
+    }
+    .percent-text {
+        font-size: 14px;
+    }
+    .projects footer .contactme {
+        padding: 8px 40px;
+    }
+    .content-section img {
+        width: 100%;
+    }
+    .space-between-image img {
+        width: 100%;
+    }
+    .space-between-image, .full-section-image  {
+        margin-bottom: 50px;
     }
 }
