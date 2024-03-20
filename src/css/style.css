@@ -1272,4 +1272,30 @@ mobile-page-navbar {
     #contact h2 {
         margin: 0;
     }
+    .projects{
+        padding: 0 1.5rem;
+    }
+    .projects h1{
+        font-size: 32px;
+    }
+    .projects p, .projects li{
+        text-align: left;
+    }
+    .flow-dragram-section{
+        margin: 0;
+        width: 100%;
+    }
+    .back-button {
+        margin-top: 0;
+        margin-left: 0rem;
+        position: fixed;
+    }
+    .custom-button-container a{
+        font-size: 16px;
+        margin-left: .5rem;
+    }
+    .back-button button.custom-button::after {
+        top: 14px;
+        
+    }
 }
