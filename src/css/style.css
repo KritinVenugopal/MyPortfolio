@@ -1170,8 +1170,24 @@ mobile-page-navbar {
     color: #000;
     text-decoration: none;
 }
+.btn-project{
+    display: none;
+}
+@media (max-width: 1024px) {
+    .card-section-innerPage {
+        flex-wrap: nowrap; /* Prevent cards from wrapping */
+        overflow-x: scroll; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+        scroll-snap-type: x mandatory; /* Enable snap scrolling */
+    }
 
-
+    .card-section-innerPage  .card-out {
+        flex: 0 0 auto;
+        width: 80%; /* Adjust based on the number of cards you want to display */
+        margin-right: 20px; /* Adjust spacing between cards */
+        scroll-snap-align: start; /* Snap behavior */
+    }
+}
 /* mobile menu end */
 @media only screen and (max-width: 480px) {
     #img-1 {
@@ -1303,6 +1319,7 @@ mobile-page-navbar {
         margin-top: 0;
         margin-left: 0rem;
         position: fixed;
+        z-index: 9999;
     }
 
     .custom-button-container a {
@@ -1368,6 +1385,7 @@ mobile-page-navbar {
         box-shadow: 2px 2px 0px 1px #C5EDF6;
         margin-bottom: 1rem;
         font-size: 16px;
+        display: inline;
     }
     .btn-project.projectPrev {
         margin-right: 2rem;
