@@ -1170,24 +1170,34 @@ mobile-page-navbar {
     color: #000;
     text-decoration: none;
 }
-.btn-project{
+
+.btn-project {
     display: none;
 }
+
 @media (max-width: 1024px) {
     .card-section-innerPage {
-        flex-wrap: nowrap; /* Prevent cards from wrapping */
-        overflow-x: scroll; /* Enable horizontal scrolling */
-        -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-        scroll-snap-type: x mandatory; /* Enable snap scrolling */
+        flex-wrap: nowrap;
+        /* Prevent cards from wrapping */
+        overflow-x: scroll;
+        /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch;
+        /* Enable smooth scrolling on iOS */
+        scroll-snap-type: x mandatory;
+        /* Enable snap scrolling */
     }
 
-    .card-section-innerPage  .card-out {
+    .card-section-innerPage .card-out {
         flex: 0 0 auto;
-        width: 80%; /* Adjust based on the number of cards you want to display */
-        margin-right: 20px; /* Adjust spacing between cards */
-        scroll-snap-align: start; /* Snap behavior */
+        width: 80%;
+        /* Adjust based on the number of cards you want to display */
+        margin-right: 20px;
+        /* Adjust spacing between cards */
+        scroll-snap-align: start;
+        /* Snap behavior */
     }
 }
+
 /* mobile menu end */
 @media only screen and (max-width: 480px) {
     #img-1 {
@@ -1355,28 +1365,36 @@ mobile-page-navbar {
     .full-section-image {
         margin-bottom: 50px;
     }
+
     .custom-aer-image img {
         width: 100%;
     }
+
     .aer-slider-container {
         width: auto;
     }
+
     .projectSlider {
-        overflow: hidden;
+        overflow-x: auto;
         white-space: nowrap;
         position: relative;
     }
-    
+
     .projectSlider .card-out {
         display: inline-block;
-        width: 300px; /* Adjust as needed */
-        margin-right: 10px; /* Adjust as needed */
+        width: 248px;
+        /* Adjust as needed */
+        margin-right: 10px;
+        /* Adjust as needed */
         opacity: 1;
-        transition: opacity 0.5s ease; /* Add transition */
+        transition: opacity 0.5s ease;
+        /* Add transition */
     }
+
     .card-out.active {
         opacity: 1;
     }
+
     .btn-project {
         background: #fff;
         border: none;
@@ -1387,7 +1405,30 @@ mobile-page-navbar {
         font-size: 16px;
         display: inline;
     }
+
     .btn-project.projectPrev {
-        margin-right: 2rem;
+        margin-right: 3rem;
+        margin-left: 1rem;
+    }
+    .projectSlider .card{
+        margin-bottom: 2rem;
+    }
+    .image-page-start::before {
+        left: 0px;
+        background-size: contain;
+    }
+    .image-page-end::before {
+        left: 0;
+        background-size: contain;
+    }
+    .projectSlider .info-card-context {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .projectSlider  .card h3 {
+        font-size: 18px;
+    }
+    .projectSlider  .card h4 {
+        font-size: 16px;
     }
 }
