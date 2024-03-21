@@ -993,6 +993,7 @@ mobile-page-navbar {
     z-index: 100;
     backface-visibility: hidden;
     transition: 0.35s ease;
+    width: max-content;
 }
 
 .mobile-navigation .fixed-nav-bar.scrolled {
@@ -1002,16 +1003,17 @@ mobile-page-navbar {
 }
 
 .mobile-navigation .fixed-nav-bar.scrolled .menu-button-label .white-bar {
-    background-color: #000;
+    background-color: #139AB8;
 }
 
 .mobile-navigation .drop-down-container {
-    height: 24%;
+    height: 14%;
     width: 90%;
     left: 160%;
     margin-top: 5px;
     transform: translateX(-50%);
     transition: 0.3s ease;
+    border-radius: 25px;
 }
 
 .mobile-navigation .drop-down-item {
@@ -1020,7 +1022,7 @@ mobile-page-navbar {
     left: 0;
     right: 8px;
     bottom: 0;
-    background-color: #f9f9f9;
+    background-color: #f9f9f959;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1046,24 +1048,27 @@ mobile-page-navbar {
     position: fixed;
     height: 0px;
     width: 100%;
-    top: 50px;
-    background-color: #fff;
+    top: 0px;
+    background-color: #ffffff00;
     transition: 0.35s ease, height 0.35s 0.3s ease;
     z-index: 90;
 }
 
-.mobile-navigation .the-bass.scrolled {
+/* .mobile-navigation .the-bass.scrolled {
     top: 60px;
-}
+} */
 
 .mobile-navigation .the-bass.dropped {
-    height: 60vh;
+    height: 50vh;
     padding: 5px 0;
     transition: 0.35s ease;
+    backdrop-filter: blur(10px);
+    background: #fff0;
 }
 
 .mobile-navigation .the-bass.dropped .drop-down-container {
     left: 50%;
+    margin-bottom: 2rem;
 }
 
 .mobile-navigation .the-bass.dropped .drop-down-container:nth-child(1) {
@@ -1091,12 +1096,13 @@ mobile-page-navbar {
     transition: 0.4s ease;
     background: rgba(0, 0, 0, 0.06);
     left: 0;
+    border-radius: 50%;
 }
 
 .mobile-navigation .menu-button-label .white-bar {
     position: absolute;
     height: 2px;
-    width: 66%;
+    width: 55%;
     background-color: #ccc;
     left: 50%;
     transform: translateX(-50%);
@@ -1164,6 +1170,7 @@ mobile-page-navbar {
     color: #000;
     text-decoration: none;
 }
+
 
 /* mobile menu end */
 @media only screen and (max-width: 480px) {
@@ -1269,50 +1276,100 @@ mobile-page-navbar {
     mobile-page-navbar {
         display: block;
     }
+
     #contact h2 {
         margin: 0;
     }
-    .projects{
+
+    .projects {
         padding: 0 1.5rem;
     }
-    .projects h1{
+
+    .projects h1 {
         font-size: 32px;
     }
-    .projects p, .projects li{
+
+    .projects p,
+    .projects li {
         text-align: left;
     }
-    .flow-dragram-section{
+
+    .flow-dragram-section {
         margin: 0;
         width: 100%;
     }
+
     .back-button {
         margin-top: 0;
         margin-left: 0rem;
         position: fixed;
     }
-    .custom-button-container a{
+
+    .custom-button-container a {
         font-size: 16px;
         margin-left: .5rem;
     }
+
     .back-button button.custom-button::after {
         top: 14px;
     }
+
     .percent-box .percent-number {
         font-size: 36px;
     }
+
     .percent-text {
         font-size: 14px;
     }
+
     .projects footer .contactme {
         padding: 8px 40px;
     }
+
     .content-section img {
         width: 100%;
     }
+
     .space-between-image img {
         width: 100%;
     }
-    .space-between-image, .full-section-image  {
+
+    .space-between-image,
+    .full-section-image {
         margin-bottom: 50px;
+    }
+    .custom-aer-image img {
+        width: 100%;
+    }
+    .aer-slider-container {
+        width: auto;
+    }
+    .projectSlider {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+    }
+    
+    .projectSlider .card-out {
+        display: inline-block;
+        width: 300px; /* Adjust as needed */
+        margin-right: 10px; /* Adjust as needed */
+        opacity: 1;
+        transition: opacity 0.5s ease; /* Add transition */
+    }
+    .card-out.active {
+        opacity: 1;
+    }
+    .btn-project {
+        background: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: .75rem 2rem;
+        box-shadow: 2px 2px 0px 1px #C5EDF6;
+        margin-bottom: 1rem;
+        font-size: 16px;
+    }
+    .btn-project.projectPrev {
+        margin-right: 2rem;
     }
 }

@@ -20,4 +20,10 @@ $(document).ready(function () {
         );
     });
 
+    // Close menu when item is clicked
+    $('.drop-down-item').on('click', function () {
+        $('#menuButton').prop('checked', false);
+        $('.the-bass').removeClass('dropped');
+    });
+
 });
