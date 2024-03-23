@@ -1431,4 +1431,11 @@ mobile-page-navbar {
     .projectSlider  .card h4 {
         font-size: 16px;
     }
+    .aer-preview-image {
+        width: 48px;
+        margin: 0 8px;
+    }
+    .aer-preview-container {
+        margin-top: 20px;
+    }
 }
