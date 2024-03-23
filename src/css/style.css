@@ -1313,6 +1313,7 @@ mobile-page-navbar {
 
     .projects h1 {
         font-size: 32px;
+        text-align: left;
     }
 
     .projects p,
@@ -1399,16 +1400,20 @@ mobile-page-navbar {
         background: #fff;
         border: none;
         border-radius: 25px;
-        padding: .75rem 2rem;
+        /* padding: .75rem 2rem; */
         box-shadow: 2px 2px 0px 1px #C5EDF6;
         margin-bottom: 1rem;
         font-size: 16px;
         display: inline;
+        position: absolute;
+        bottom: 32%;
     }
 
     .btn-project.projectPrev {
         margin-right: 3rem;
         margin-left: 1rem;
+        position: absolute;
+        left: -15px;
     }
     .projectSlider .card{
         margin-bottom: 2rem;
@@ -1437,5 +1442,15 @@ mobile-page-navbar {
     }
     .aer-preview-container {
         margin-top: 20px;
+    }
+    .btn-project.projectPrev img {
+        transform: rotateY(180deg);
+    }
+    .view-projects-inner-page {
+        position: relative;
+    }
+    .btn-project.projectNext {
+        position: absolute;
+        right: 7px;
     }
 }
