@@ -80,7 +80,7 @@ class projectcards extends HTMLElement {
                 <div class="card-img"><img src="src/asset/images/card-images/signal-card.png" alt=""></div>
                 <div class="info-card-context">
                     <div class="card-content">
-                        <h3>Sginal</h3>
+                        <h3>Signal</h3>
                         <h4>17th January 2022</h4>
                     </div>
                     <div class="card-details">
