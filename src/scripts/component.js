@@ -63,6 +63,30 @@ class projectcards extends HTMLElement {
         this.innerHTML = `
 <div class="cards card-container">
     <div class="card-out">
+        <a href="/MyPortfolio/src/projects/chandigarhUniversityProfessor.html">
+            <div class="card">
+                <div class="card-img"><img src="src/asset/images/card-images/frame-card.png" alt=""></div>
+                <div class="info-card-context">
+                    <div class="card-content">
+                        <h3>Assistant Professor</h3>
+                        <h4>25th January 2025</h4>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-info">
+                            <p>Academics</p>
+                            <p>User Interface</p>
+                            <p>Product Design</p>
+                        </div>
+                        <div class="card-link">
+                            <button><a href="/MyPortfolio/src/projects/chandigarhUniversityProfessor.html">View
+                                    Project</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="card-out">
         <a href="/MyPortfolio/src/projects/adTech.html">
             <div class="card">
                 <div class="card-img"><img src="src/asset/images/card-images/gg-card.png" alt=""></div>
@@ -172,7 +196,7 @@ class projectcards extends HTMLElement {
             </div>
         </a>
     </div>
-    <div class="card-out">
+    <div class="card-out hidden">
         <a href="/MyPortfolio/src/projects/hamsak.html">
             <div class="card">
                 <div class="card-img"><img src="src/asset/images/card-images/hamsak-card.png" alt=""></div>
@@ -263,3 +287,21 @@ customElements.define('project-cards', projectcards);
 customElements.define('custom-back-buttons', customBackButtons);
 customElements.define('custom-footer', footerCustom);
 customElements.define('custom-footer-inner-page', footerCustomInnerPage);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const viewMoreBtn = document.getElementById('view-more-btn');
+    const extraCard = document.querySelector('.card-container .card-out:nth-child(7)');
+
+    if (viewMoreBtn && extraCard) {
+        viewMoreBtn.addEventListener('click', () => {
+            extraCard.classList.toggle('hidden');
+
+            const isHidden = extraCard.classList.contains('hidden');
+            if (isHidden) {
+                viewMoreBtn.textContent = 'View More Projects';
+            } else {
+                viewMoreBtn.textContent = 'View Less Projects';
+            }
+        });
+    }
+});
