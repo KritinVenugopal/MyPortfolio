@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="../asset/images/fav-icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../asset/images/fav-icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../asset/images/fav-icons/favicon-16x16.png">
+    <link rel="manifest" href="../json/site.webmanifest">
+    <link rel="mask-icon" href="../asset/images/fav-icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Portfolio - AdTech</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/navInnerPage.js"></script>
+</head>
+
+<body class="projects Professor-page">
+    <header>
+        <inner-page-navbar></inner-page-navbar>
+    </header>
+    <section class="less-margin-section">
+        <custom-back-buttons></custom-back-buttons>
+    </section>
+    <section class="flex-section" id="flex-section-1">
+        <div class="flex-section-image">
+            <img src="../asset/images/teaching/cg-logo.png" alt="CG-logo">
+        </div>
+        <div class="flex-section-content">
+            <h1>Teaching & Mentorship</h1>
+            <p>At Chandigarh University, I taught subjects including UI/UX Design, Portfolio Design, Graphic Design,
+                Design Thinking, Communication Design, Evolution of Design, and Graduation Projects. I also served as
+                the Administrative Coordinator for the Industrial Design Department, managing academic and departmental
+                activities.
+            </p>
+        </div>
+    </section>
+    <section class="flex-section" id="flex-section-2">
+        <div class="flex-section-image video-wrap">
+            <video id="teachingVideo" class="teaching-video" width="auto" height="516" autoplay muted loop playsinline
+                preload="metadata" controlslist="nodownload noplaybackrate">
+                <source src="../asset/videos/teaching/WhatsApp Video 2025-11-03 at 12.13.00_21e2984d.mp4"
+                    type="video/mp4">
+            </video>
+            <div class="mute-btn" id="muteToggle">
+                <svg viewBox="0 0 24 24">
+                    <path d="M11 5 L7 9 H3 v6 h4 l4 4 V5z" />
+                    <line class="slash" x1="4" y1="6" x2="16" y2="20" />
+                </svg>
+            </div>
+            <script>
+                const video = document.getElementById("teachingVideo");
+                const btn = document.getElementById("muteToggle");
+
+                btn.addEventListener("click", () => {
+                    video.muted = !video.muted;
+                    btn.classList.toggle("unmuted", !video.muted);
+                });
+            </script>
+        </div>
+        <div class="flex-section-content ValueAddedCourse-custom">
+            <h2>Value Added Course</h2>
+            <p>I conducted specialized Value-Added Courses (VACs) to enhance industry readiness:
+            <ul class="ValueAddedCourse">
+                <li>
+                    <p>UI in Figma – Interface design and prototyping for web and mobile.</p>
+                </li>
+                <li>
+                    <p>Motion Graphics in After Effects – Animation and visual storytelling for digital media</p>
+                </li>
+            </ul>
+            </p>
+        </div>
+    </section>
+    <h2 style="text-align: center;margin-bottom: 3rem;">Awards & Achievements</h2>
+    <section class="flex-section" id="flex-section-4">
+        <div class="flex-section-image">
+            <img src="../asset/images/teaching/awards.png" alt="holding-image">
+        </div>
+        <div class="flex-section-content">
+            <h2>Certificate of Appreciation – CUDAT</h2>
+            <p>
+                Recognized for preparing the Question Bank for the Chandigarh University Design Aptitude Test (CUDAT),
+                contributing to a rigorous and fair evaluation framework for aspiring design students.
+            </p>
+        </div>
+    </section>
+    <section class="flex-section" id="flex-section-5">
+        <div class="flex-section-image">
+            <img src="../asset/images/teaching/teamplayer.png" alt="holding-image">
+        </div>
+        <div class="flex-section-content">
+            <h2>Best Team Player Award</h2>
+            <p>
+                Awarded the Best Team Player title for collaborative contributions to departmental initiatives,
+                reflecting commitment to teamwork, coordination, and academic growth at Chandigarh University.
+            </p>
+        </div>
+    </section>
+    <!-- <section class="teaching-showcase">
+        <h2>Student Work Showcase</h2>
+        <p>A selection of student projects created under my mentorship, highlighting their creativity and professional
+            skills.</p>
+    </section> -->
+    <section class="view-projects-inner-page">
+        <h2>Other Projects That Might Interest You</h2>
+        <div class="card-section-innerPage">
+            <div class="card-out">
+                <a href="../projects/adTech.html">
+                    <div class="card">
+                        <div class="card-img"><img src="../asset/images/card-images/gg-card.png" alt=""></div>
+                        <div class="info-card-context">
+                            <div class="card-content">
+                                <h3>Journey at GreedyGame</h3>
+                                <h4>8th February 2024</h4>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-info">
+                                    <p>User Interface</p>
+                                    <p>User Experience</p>
+                                </div>
+                                <div class="card-link">
+                                    <button><a href="../projects/adTech.html">View Project</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-out">
+                <a href="../projects/universalOtt.html">
+                    <div class="card">
+                        <div class="card-img"><img src="../asset/images/card-images/universalOtt-card.png" alt=""></div>
+                        <div class="info-card-context">
+                            <div class="card-content">
+                                <h3>Universal OTT</h3>
+                                <h4>6th February 2024</h4>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-info">
+                                    <p>Case Study</p>
+                                    <p>User Experience</p>
+                                </div>
+                                <div class="card-link">
+                                    <button><a href="../projects/universalOtt.html">View Project</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-out">
+                <a href="../projects/aer.html">
+                    <div class="card">
+                        <div class="card-img"><img src="../asset/images/card-images/aer-card-updated.png" alt=""></div>
+                        <div class="info-card-context">
+                            <div class="card-content">
+                                <h3>AER</h3>
+                                <h4>31st March 2019</h4>
+                            </div>
+                            <div class="card-details">
+                                <div class="card-info">
+                                    <p>Case Study</p>
+                                    <p>User Experience</p>
+                                </div>
+                                <div class="card-link">
+                                    <button><a href="../projects/aer.html">View Project</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <custom-footer-inner-page></custom-footer-inner-page>
+    <script src="../scripts/component.js"></script>
+</body>
+
+</html>
