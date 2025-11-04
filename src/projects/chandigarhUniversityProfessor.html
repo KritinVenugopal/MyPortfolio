@@ -38,18 +38,22 @@
         </div>
     </section>
     <section class="flex-section" id="flex-section-2">
-        <div class="flex-section-image video-wrap">
-            <video id="teachingVideo" class="teaching-video" width="auto" height="516" autoplay muted loop playsinline
-                preload="metadata" controlslist="nodownload noplaybackrate">
-                <source src="../asset/videos/teaching/WhatsApp Video 2025-11-03 at 12.13.00_21e2984d.mp4"
-                    type="video/mp4">
-            </video>
-            <div class="mute-btn" id="muteToggle">
-                <svg viewBox="0 0 24 24">
-                    <path d="M11 5 L7 9 H3 v6 h4 l4 4 V5z" />
-                    <line class="slash" x1="4" y1="6" x2="16" y2="20" />
-                </svg>
+        <div class="flex-section-image">
+            <!-- <img class="op-no" src="../asset/images/teaching/cg-logo.png" alt="CG-logo"> -->
+            <div class="video-wrap">
+                <video id="teachingVideo" class="teaching-video" width="auto" height="516" autoplay muted loop
+                    playsinline preload="metadata" controlslist="nodownload noplaybackrate">
+                    <source src="../asset/videos/teaching/WhatsApp Video 2025-11-03 at 12.13.00_21e2984d.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="mute-btn" id="muteToggle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M11 5 L7 9 H3 v6 h4 l4 4 V5z" />
+                        <line class="slash" x1="4" y1="6" x2="16" y2="20" />
+                    </svg>
+                </div>
             </div>
+
             <script>
                 const video = document.getElementById("teachingVideo");
                 const btn = document.getElementById("muteToggle");
@@ -62,7 +66,7 @@
         </div>
         <div class="flex-section-content ValueAddedCourse-custom">
             <h2>Value Added Course</h2>
-            <p>I conducted specialized Value-Added Courses (VACs) to enhance industry readiness:
+            <p>I conducted specialized Value-Added Courses <br>(VACs) to enhance industry readiness:
             <ul class="ValueAddedCourse">
                 <li>
                     <p>UI in Figma – Interface design and prototyping for web and mobile.</p>

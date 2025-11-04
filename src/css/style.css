@@ -1174,7 +1174,10 @@ mobile-page-navbar {
 .btn-project {
     display: none;
 }
-
+.ValueAddedCourse-custom {
+    position: relative;
+    left: 116px;
+}
 @media (max-width: 1024px) {
     .card-section-innerPage {
         flex-wrap: nowrap;
@@ -1453,6 +1456,10 @@ mobile-page-navbar {
         position: absolute;
         right: 7px;
     }
+    .ValueAddedCourse-custom {
+    position: relative;
+    left: 0px;
+}
 }
 .teaching-video{
     border-radius: 30px;
