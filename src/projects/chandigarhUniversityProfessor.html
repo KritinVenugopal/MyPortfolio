@@ -196,85 +196,120 @@
         //     const viewerHash = '#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit';
         //     return encodedPath + (afterPath || '') + viewerHash;
         // }
-        function buildPdfUrl(raw) {
-            if (!raw) return '';
-            raw = raw.trim().replace(/^["']|["']$/g, '').replace(/\\/g, '/');
-            const [pathOnly, afterPath = ''] = raw.split(/(?=[?#])/);
-            const encodedPath = pathOnly.split('/').map(seg => encodeURIComponent(decodeURIComponent(seg))).join('/');
-            const viewerHash = '#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit';
-            return encodedPath + (afterPath || '') + viewerHash;
-        }
+        /* ---------- Helpers ---------- */
+// Encode path safely and hide native toolbar where possible
+function buildPdfUrl(raw) {
+  if (!raw) return "";
+  raw = raw.trim().replace(/^["']|["']$/g, "").replace(/\\/g, "/");
+  const [pathOnly, afterPath = ""] = raw.split(/(?=[?#])/);
+  const encodedPath = pathOnly
+    .split("/")
+    .map(seg => encodeURIComponent(decodeURIComponent(seg)))
+    .join("/");
+  const viewerHash = "#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit";
+  return encodedPath + (afterPath || "") + viewerHash;
+}
 
-        const modal = document.getElementById('pdfModal');
-        const frame = document.getElementById('pdfFrame');
-        const loader = document.getElementById('pdfLoader');
-        const closeBtn = document.getElementById('btnClose');
-        const fullBtn = document.getElementById('btnFullscreen');
+/* ---------- Elements ---------- */
+const modal     = document.getElementById("pdfModal");
+const frame     = document.getElementById("pdfFrame");
+const loader    = document.getElementById("pdfLoader");
+const closeBtn  = document.getElementById("btnClose");
+const fullBtn   = document.getElementById("btnFullscreen");
 
-        let pendingUrl = null;
+let pendingUrl = null;
 
-        document.querySelectorAll('.pdf-card').forEach(card => {
-            card.addEventListener('click', () => {
-                pendingUrl = buildPdfUrl(card.getAttribute('data-pdf'));
+/* ---------- Core: hard reset iframe (kills zoom/page memory) ---------- */
+function resetIframe() {
+  try {
+    // 1) blank it (most important)
+    frame.src = "about:blank";
+    // 2) remove src entirely to force a fresh viewer instance on next set
+    frame.removeAttribute("src");
+    // 3) srcdoc as an extra nuke (safe; ignored by PDF viewer)
+    frame.setAttribute("srcdoc", "<!doctype html><meta charset='utf-8'>");
+    // 4) remove srcdoc so next load uses src normally
+    // (do it on the next microtask to ensure it painted)
+    setTimeout(() => frame.removeAttribute("srcdoc"), 0);
+  } catch(_) { /* ignore */ }
+}
 
-                // reset viewer + show loader
-                frame.removeAttribute('src');
-                loader.style.display = 'grid';
+/* ---------- Open modal for ANY .pdf-card ---------- */
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".pdf-card");
+  if (!card) return;
 
-                modal.classList.add('open');
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('modal-lock');
+  pendingUrl = buildPdfUrl(card.getAttribute("data-pdf"));
 
-                // wait for the opening transition to end, then set the src
-                const onOpened = (e) => {
-                    if (e.target !== modal) return;
-                    modal.removeEventListener('transitionend', onOpened);
-                    if (pendingUrl) frame.src = pendingUrl; // THIS starts the heavy load AFTER animation
-                };
-                modal.addEventListener('transitionend', onOpened, { once: true });
-            });
-        });
+  // show modal + loader immediately
+  loader.style.display = "grid";
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-lock");
 
-        // Frame ready -> hide loader (fires when the viewer UI is ready)
-        frame.addEventListener('load', () => {
-            loader.style.display = 'none';
-        });
+  // fully reset viewer state BEFORE loading a new PDF
+  resetIframe();
 
-        // CLOSE: animate out first, then clear the heavy PDF
-        function closeModal() {
-            modal.classList.remove('open');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('modal-lock');
+  // After the open transition finishes, set the new src.
+  // Use double rAF to guarantee the loader/overlay paint first.
+  const onOpened = (ev) => {
+    if (ev.target !== modal) return;
+    modal.removeEventListener("transitionend", onOpened);
 
-            const onClosed = (e) => {
-                if (e.target !== modal) return;
-                modal.removeEventListener('transitionend', onClosed);
-                pendingUrl = null;
-                frame.src = 'about:blank';                 // unload AFTER animation for smoothness
-                if (document.fullscreenElement) document.exitFullscreen?.();
-            };
-            modal.addEventListener('transitionend', onClosed, { once: true });
-        }
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    if (!pendingUrl) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        frame.src = pendingUrl; // fresh load with default zoom
+      });
+    });
+  };
+  modal.addEventListener("transitionend", onOpened, { once: true });
+});
 
-        // Fullscreen only on explicit click
-        fullBtn.addEventListener('click', async () => {
-            try {
-                if (!document.fullscreenElement) await modal.requestFullscreen?.();
-                else await document.exitFullscreen?.();
-            } catch { }
-        });
+/* ---------- Hide loader when viewer is ready ---------- */
+frame.addEventListener("load", () => {
+  loader.style.display = "none";
+});
 
-        // Soft measures to discourage saving/printing
-        modal.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            const k = e.key.toLowerCase(), m = e.ctrlKey || e.metaKey;
-            if (modal.classList.contains('open') && ((m && k === 's') || (m && k === 'p'))) {
-                e.preventDefault(); e.stopPropagation();
-            }
-        });
+/* ---------- Close modal ---------- */
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-lock");
+
+  const onClosed = (ev) => {
+    if (ev.target !== modal) return;
+    modal.removeEventListener("transitionend", onClosed);
+
+    // Clear pending and HARD reset after animation so the close is smooth
+    pendingUrl = null;
+    resetIframe();
+
+    if (document.fullscreenElement) document.exitFullscreen?.();
+  };
+  modal.addEventListener("transitionend", onClosed, { once: true });
+}
+closeBtn.addEventListener("click", closeModal);
+modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+/* ---------- Fullscreen only on explicit user click ---------- */
+fullBtn.addEventListener("click", async () => {
+  try {
+    if (!document.fullscreenElement) await modal.requestFullscreen?.();
+    else await document.exitFullscreen?.();
+  } catch {}
+});
+
+/* ---------- Soft anti-download (optional) ---------- */
+modal.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  const k = e.key.toLowerCase(), m = e.ctrlKey || e.metaKey;
+  if (modal.classList.contains("open") && ((m && k === "s") || (m && k === "p"))) {
+    e.preventDefault(); e.stopPropagation();
+  }
+});
+
     </script>
     <!-- showcase section end -->
     <section class="view-projects-inner-page">
