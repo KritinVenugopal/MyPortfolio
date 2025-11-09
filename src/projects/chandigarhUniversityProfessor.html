@@ -78,7 +78,7 @@
             </p>
         </div>
     </section>
-    <h2 style="text-align: center;margin-bottom: 3rem;">Awards & Achievements</h2>
+    <h2 style="text-align: center;margin-bottom: 3rem; color: #139AB8;">Awards & Achievements</h2>
     <section class="flex-section" id="flex-section-4">
         <div class="flex-section-image">
             <img src="../asset/images/teaching/awards.png" alt="holding-image">
@@ -103,11 +103,180 @@
             </p>
         </div>
     </section>
-    <!-- <section class="teaching-showcase">
-        <h2>Student Work Showcase</h2>
-        <p>A selection of student projects created under my mentorship, highlighting their creativity and professional
-            skills.</p>
-    </section> -->
+    <!-- showcase section start -->
+    <section class="wrap teaching-showcase">
+        <h2 style="color: #139AB8;">Student Work Showcase</h2>
+        <p class="intro">A selection of student projects created under my mentorship, highlighting their creativity and
+            professional skills.</p>
+
+        <div class="section">
+            <h2>Portfolio Design</h2>
+            <div class="grid">
+                <div class="pdf-card" data-pdf="../asset/pdf/Portfolio-01.pdf">
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Portfolio-01.png" alt="Portfolio 01"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
+                </div>
+                <div class="pdf-card" data-pdf="../asset/pdf/Portfolio-02.pdf">
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Portfolio-02.png" alt="Portfolio 02"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 02'}));" />
+                </div>
+                <div class="pdf-card" data-pdf="../asset/pdf/Portfolio-03.pdf">
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Portfolio-03.png" alt="Portfolio 03"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 02'}));" />
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Graphic Design</h2>
+            <div class="grid">
+                <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-01.pdf"><span class="badge">PDF</span>
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Graphic-Design-01.png" alt="Portfolio 01"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
+                </div>
+                <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-02.pdf"><span class="badge">PDF</span>
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Graphic-Design-02.png" alt="Portfolio 01"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
+                </div>
+                <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-03.pdf"><span class="badge">PDF</span>
+                    <span class="badge">PDF</span>
+                    <img class="pdf-thumb" src="/src/asset/images/teaching/showcase/Graphic-Design-03.png" alt="Portfolio 01"
+                        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="section">
+            <h2>Communication In Design</h2>
+            <div class="grid">
+                <div class="pdf-card" data-pdf="pdfs/comms-01.pdf"><span class="badge">PDF</span>
+                    <div class="pdf-fallback">Comms 01</div>
+                </div>
+                <div class="pdf-card" data-pdf="pdfs/comms-02.pdf"><span class="badge">PDF</span>
+                    <div class="pdf-fallback">Comms 02</div>
+                </div>
+                <div class="pdf-card" data-pdf="pdfs/comms-03.pdf"><span class="badge">PDF</span>
+                    <div class="pdf-fallback">Comms 03</div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+    <div id="pdfModal" class="modal" aria-hidden="true">
+        <div class="modal__frame-wrap" role="dialog" aria-modal="true" aria-label="PDF Viewer">
+            <div class="modal__bar"
+                style="position:absolute; top:8px; right:8px; left:8px; display:flex; gap:8px; justify-content:flex-end; z-index:2;">
+                <button class="btn secondary" id="btnFullscreen">Fullscreen</button>
+                <button class="btn" id="btnClose">Close</button>
+            </div>
+
+            <!-- Loader (shown until the PDF viewer is ready) -->
+            <div id="pdfLoader" class="loader" aria-hidden="true">
+                <span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span>
+            </div>
+
+            <!-- The PDF frame (src will be set by JS after the open animation finishes) -->
+            <iframe id="pdfFrame" allowfullscreen referrerpolicy="no-referrer"></iframe>
+        </div>
+    </div>
+    <script>
+        // Build a viewer URL that hides download/toolbar in most built-in viewers
+        // function buildPdfUrl(raw) {
+        //     if (!raw) return '';
+        //     raw = raw.trim().replace(/^["']|["']$/g, '').replace(/\\/g, '/');
+        //     const [pathOnly, afterPath = ''] = raw.split(/(?=[?#])/);
+        //     const encodedPath = pathOnly
+        //         .split('/')
+        //         .map(seg => encodeURIComponent(decodeURIComponent(seg))) // decode first, then encode once
+        //         .join('/');
+        //     const viewerHash = '#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit';
+        //     return encodedPath + (afterPath || '') + viewerHash;
+        // }
+        function buildPdfUrl(raw) {
+            if (!raw) return '';
+            raw = raw.trim().replace(/^["']|["']$/g, '').replace(/\\/g, '/');
+            const [pathOnly, afterPath = ''] = raw.split(/(?=[?#])/);
+            const encodedPath = pathOnly.split('/').map(seg => encodeURIComponent(decodeURIComponent(seg))).join('/');
+            const viewerHash = '#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit';
+            return encodedPath + (afterPath || '') + viewerHash;
+        }
+
+        const modal = document.getElementById('pdfModal');
+        const frame = document.getElementById('pdfFrame');
+        const loader = document.getElementById('pdfLoader');
+        const closeBtn = document.getElementById('btnClose');
+        const fullBtn = document.getElementById('btnFullscreen');
+
+        let pendingUrl = null;
+
+        document.querySelectorAll('.pdf-card').forEach(card => {
+            card.addEventListener('click', () => {
+                pendingUrl = buildPdfUrl(card.getAttribute('data-pdf'));
+
+                // reset viewer + show loader
+                frame.removeAttribute('src');
+                loader.style.display = 'grid';
+
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-lock');
+
+                // wait for the opening transition to end, then set the src
+                const onOpened = (e) => {
+                    if (e.target !== modal) return;
+                    modal.removeEventListener('transitionend', onOpened);
+                    if (pendingUrl) frame.src = pendingUrl; // THIS starts the heavy load AFTER animation
+                };
+                modal.addEventListener('transitionend', onOpened, { once: true });
+            });
+        });
+
+        // Frame ready -> hide loader (fires when the viewer UI is ready)
+        frame.addEventListener('load', () => {
+            loader.style.display = 'none';
+        });
+
+        // CLOSE: animate out first, then clear the heavy PDF
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-lock');
+
+            const onClosed = (e) => {
+                if (e.target !== modal) return;
+                modal.removeEventListener('transitionend', onClosed);
+                pendingUrl = null;
+                frame.src = 'about:blank';                 // unload AFTER animation for smoothness
+                if (document.fullscreenElement) document.exitFullscreen?.();
+            };
+            modal.addEventListener('transitionend', onClosed, { once: true });
+        }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        // Fullscreen only on explicit click
+        fullBtn.addEventListener('click', async () => {
+            try {
+                if (!document.fullscreenElement) await modal.requestFullscreen?.();
+                else await document.exitFullscreen?.();
+            } catch { }
+        });
+
+        // Soft measures to discourage saving/printing
+        modal.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            const k = e.key.toLowerCase(), m = e.ctrlKey || e.metaKey;
+            if (modal.classList.contains('open') && ((m && k === 's') || (m && k === 'p'))) {
+                e.preventDefault(); e.stopPropagation();
+            }
+        });
+    </script>
+    <!-- showcase section end -->
     <section class="view-projects-inner-page">
         <h2>Other Projects That Might Interest You</h2>
         <div class="card-section-innerPage">
