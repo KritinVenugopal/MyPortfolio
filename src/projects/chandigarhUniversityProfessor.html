@@ -84,7 +84,7 @@
             <img src="../asset/images/teaching/awards.png" alt="holding-image">
         </div>
         <div class="flex-section-content">
-            <h2>Certificate of Appreciation – CUDAT</h2>
+            <h3>Certificate of Appreciation – CUDAT</h3>
             <p>
                 Recognized for preparing the Question Bank for the Chandigarh University Design Aptitude Test (CUDAT),
                 contributing to a rigorous and fair evaluation framework for aspiring design students.
@@ -96,7 +96,7 @@
             <img src="../asset/images/teaching/teamplayer.png" alt="holding-image">
         </div>
         <div class="flex-section-content">
-            <h2>Best Team Player Award</h2>
+            <h3>Best Team Player Award</h3>
             <p>
                 Awarded the Best Team Player title for collaborative contributions to departmental initiatives,
                 reflecting commitment to teamwork, coordination, and academic growth at Chandigarh University.
@@ -110,7 +110,7 @@
             professional skills.</p>
 
         <div class="section">
-            <h2>Portfolio Design</h2>
+            <h3>Portfolio Design</h3>
             <div class="grid">
                 <div class="pdf-card" data-pdf="../asset/pdf/Portfolio-01.pdf">
                     <span class="badge">PDF</span>
@@ -131,21 +131,24 @@
         </div>
 
         <div class="section">
-            <h2>Graphic Design</h2>
+            <h3>Graphic Design</h3>
             <div class="grid">
                 <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-01.pdf"><span class="badge">PDF</span>
                     <span class="badge">PDF</span>
-                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-01.png" alt="Portfolio 01"
+                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-01.png"
+                        alt="Portfolio 01"
                         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
                 </div>
                 <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-02.pdf"><span class="badge">PDF</span>
                     <span class="badge">PDF</span>
-                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-02.png" alt="Portfolio 01"
+                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-02.png"
+                        alt="Portfolio 01"
                         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
                 </div>
                 <div class="pdf-card" data-pdf="../asset/pdf/Graphic-Design-03.pdf"><span class="badge">PDF</span>
                     <span class="badge">PDF</span>
-                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-03.png" alt="Portfolio 01"
+                    <img class="pdf-thumb" src="../asset/images/teaching/showcase/Graphic-Design-03.png"
+                        alt="Portfolio 01"
                         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pdf-fallback',innerText:'Portfolio 01'}));" />
                 </div>
             </div>
@@ -197,118 +200,118 @@
         //     return encodedPath + (afterPath || '') + viewerHash;
         // }
         /* ---------- Helpers ---------- */
-// Encode path safely and hide native toolbar where possible
-function buildPdfUrl(raw) {
-  if (!raw) return "";
-  raw = raw.trim().replace(/^["']|["']$/g, "").replace(/\\/g, "/");
-  const [pathOnly, afterPath = ""] = raw.split(/(?=[?#])/);
-  const encodedPath = pathOnly
-    .split("/")
-    .map(seg => encodeURIComponent(decodeURIComponent(seg)))
-    .join("/");
-  const viewerHash = "#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit";
-  return encodedPath + (afterPath || "") + viewerHash;
-}
+        // Encode path safely and hide native toolbar where possible
+        function buildPdfUrl(raw) {
+            if (!raw) return "";
+            raw = raw.trim().replace(/^["']|["']$/g, "").replace(/\\/g, "/");
+            const [pathOnly, afterPath = ""] = raw.split(/(?=[?#])/);
+            const encodedPath = pathOnly
+                .split("/")
+                .map(seg => encodeURIComponent(decodeURIComponent(seg)))
+                .join("/");
+            const viewerHash = "#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit";
+            return encodedPath + (afterPath || "") + viewerHash;
+        }
 
-/* ---------- Elements ---------- */
-const modal     = document.getElementById("pdfModal");
-const frame     = document.getElementById("pdfFrame");
-const loader    = document.getElementById("pdfLoader");
-const closeBtn  = document.getElementById("btnClose");
-const fullBtn   = document.getElementById("btnFullscreen");
+        /* ---------- Elements ---------- */
+        const modal = document.getElementById("pdfModal");
+        const frame = document.getElementById("pdfFrame");
+        const loader = document.getElementById("pdfLoader");
+        const closeBtn = document.getElementById("btnClose");
+        const fullBtn = document.getElementById("btnFullscreen");
 
-let pendingUrl = null;
+        let pendingUrl = null;
 
-/* ---------- Core: hard reset iframe (kills zoom/page memory) ---------- */
-function resetIframe() {
-  try {
-    // 1) blank it (most important)
-    frame.src = "about:blank";
-    // 2) remove src entirely to force a fresh viewer instance on next set
-    frame.removeAttribute("src");
-    // 3) srcdoc as an extra nuke (safe; ignored by PDF viewer)
-    frame.setAttribute("srcdoc", "<!doctype html><meta charset='utf-8'>");
-    // 4) remove srcdoc so next load uses src normally
-    // (do it on the next microtask to ensure it painted)
-    setTimeout(() => frame.removeAttribute("srcdoc"), 0);
-  } catch(_) { /* ignore */ }
-}
+        /* ---------- Core: hard reset iframe (kills zoom/page memory) ---------- */
+        function resetIframe() {
+            try {
+                // 1) blank it (most important)
+                frame.src = "about:blank";
+                // 2) remove src entirely to force a fresh viewer instance on next set
+                frame.removeAttribute("src");
+                // 3) srcdoc as an extra nuke (safe; ignored by PDF viewer)
+                frame.setAttribute("srcdoc", "<!doctype html><meta charset='utf-8'>");
+                // 4) remove srcdoc so next load uses src normally
+                // (do it on the next microtask to ensure it painted)
+                setTimeout(() => frame.removeAttribute("srcdoc"), 0);
+            } catch (_) { /* ignore */ }
+        }
 
-/* ---------- Open modal for ANY .pdf-card ---------- */
-document.addEventListener("click", (e) => {
-  const card = e.target.closest(".pdf-card");
-  if (!card) return;
+        /* ---------- Open modal for ANY .pdf-card ---------- */
+        document.addEventListener("click", (e) => {
+            const card = e.target.closest(".pdf-card");
+            if (!card) return;
 
-  pendingUrl = buildPdfUrl(card.getAttribute("data-pdf"));
+            pendingUrl = buildPdfUrl(card.getAttribute("data-pdf"));
 
-  // show modal + loader immediately
-  loader.style.display = "grid";
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-lock");
+            // show modal + loader immediately
+            loader.style.display = "grid";
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-lock");
 
-  // fully reset viewer state BEFORE loading a new PDF
-  resetIframe();
+            // fully reset viewer state BEFORE loading a new PDF
+            resetIframe();
 
-  // After the open transition finishes, set the new src.
-  // Use double rAF to guarantee the loader/overlay paint first.
-  const onOpened = (ev) => {
-    if (ev.target !== modal) return;
-    modal.removeEventListener("transitionend", onOpened);
+            // After the open transition finishes, set the new src.
+            // Use double rAF to guarantee the loader/overlay paint first.
+            const onOpened = (ev) => {
+                if (ev.target !== modal) return;
+                modal.removeEventListener("transitionend", onOpened);
 
-    if (!pendingUrl) return;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        frame.src = pendingUrl; // fresh load with default zoom
-      });
-    });
-  };
-  modal.addEventListener("transitionend", onOpened, { once: true });
-});
+                if (!pendingUrl) return;
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        frame.src = pendingUrl; // fresh load with default zoom
+                    });
+                });
+            };
+            modal.addEventListener("transitionend", onOpened, { once: true });
+        });
 
-/* ---------- Hide loader when viewer is ready ---------- */
-frame.addEventListener("load", () => {
-  loader.style.display = "none";
-});
+        /* ---------- Hide loader when viewer is ready ---------- */
+        frame.addEventListener("load", () => {
+            loader.style.display = "none";
+        });
 
-/* ---------- Close modal ---------- */
-function closeModal() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-lock");
+        /* ---------- Close modal ---------- */
+        function closeModal() {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-lock");
 
-  const onClosed = (ev) => {
-    if (ev.target !== modal) return;
-    modal.removeEventListener("transitionend", onClosed);
+            const onClosed = (ev) => {
+                if (ev.target !== modal) return;
+                modal.removeEventListener("transitionend", onClosed);
 
-    // Clear pending and HARD reset after animation so the close is smooth
-    pendingUrl = null;
-    resetIframe();
+                // Clear pending and HARD reset after animation so the close is smooth
+                pendingUrl = null;
+                resetIframe();
 
-    if (document.fullscreenElement) document.exitFullscreen?.();
-  };
-  modal.addEventListener("transitionend", onClosed, { once: true });
-}
-closeBtn.addEventListener("click", closeModal);
-modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+                if (document.fullscreenElement) document.exitFullscreen?.();
+            };
+            modal.addEventListener("transitionend", onClosed, { once: true });
+        }
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
-/* ---------- Fullscreen only on explicit user click ---------- */
-fullBtn.addEventListener("click", async () => {
-  try {
-    if (!document.fullscreenElement) await modal.requestFullscreen?.();
-    else await document.exitFullscreen?.();
-  } catch {}
-});
+        /* ---------- Fullscreen only on explicit user click ---------- */
+        fullBtn.addEventListener("click", async () => {
+            try {
+                if (!document.fullscreenElement) await modal.requestFullscreen?.();
+                else await document.exitFullscreen?.();
+            } catch { }
+        });
 
-/* ---------- Soft anti-download (optional) ---------- */
-modal.addEventListener("contextmenu", (e) => e.preventDefault());
-document.addEventListener("keydown", (e) => {
-  const k = e.key.toLowerCase(), m = e.ctrlKey || e.metaKey;
-  if (modal.classList.contains("open") && ((m && k === "s") || (m && k === "p"))) {
-    e.preventDefault(); e.stopPropagation();
-  }
-});
+        /* ---------- Soft anti-download (optional) ---------- */
+        modal.addEventListener("contextmenu", (e) => e.preventDefault());
+        document.addEventListener("keydown", (e) => {
+            const k = e.key.toLowerCase(), m = e.ctrlKey || e.metaKey;
+            if (modal.classList.contains("open") && ((m && k === "s") || (m && k === "p"))) {
+                e.preventDefault(); e.stopPropagation();
+            }
+        });
 
     </script>
     <!-- showcase section end -->

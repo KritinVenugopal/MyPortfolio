@@ -5,7 +5,8 @@
     --card: #fff;
     --ink: #1f2937;
     --muted: #6b7280;
-    --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* --shadow: 0 10px 30px rgba(0, 0, 0, .08); */
+    --shadow: 0 10px 30px rgb(0 0 0 / 43%);
     --radius: 18px;
 }
 
@@ -54,7 +55,9 @@ a.active {
 h1 {
     font-size: 48px;
 }
-
+h3{
+    font-size: 24px;
+}
 .home-page h2 {
     font-size: 36px;
     color: #139AB8;
@@ -1566,6 +1569,7 @@ ul {
     justify-items: center;
     width: 85%;
     margin: 0 auto;
+    gap: 4em;
 }
 
 .pdf-card {
@@ -1667,26 +1671,30 @@ ul {
 
 @media (max-width:1025px) {
     .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .pdf-card {
-        min-height: 219px;
-        width: 350px;
+        min-height: 200px;
+        width: 297px;
     }
 }
 
 @media (max-width:769px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2em;
+    }
     .pdf-card {
-        min-height: 210px;
-        width: 300px;
+        min-height: 225px;
+        width: 330px;
     }
 }
 
 @media (max-width:600px) {
     .grid {
         grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 
